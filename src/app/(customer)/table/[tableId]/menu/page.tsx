@@ -99,7 +99,7 @@ export default function MenuPage() {
       <div className="space-y-6">
         {filteredCategories.map((cat) => (
           <div key={cat.id}>
-            <h3 className="text-lg font-bold mb-3 text-stone-900 border-l-4 border-amber-500 pl-2">
+            <h3 className="text-lg font-bold mb-3 text-white border-l-4 border-amber-500 pl-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               {cat.name}
             </h3>
             <div className="space-y-3">

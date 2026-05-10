@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center mb-6">
             <span className="text-5xl block mb-3">🍜</span>
-            <h1 className="text-xl font-bold">Bánh Canh Cá Lóc</h1>
+            <h1 className="text-xl font-bold">Bánh Canh Cá Lóc Phước Lãnh</h1>
             <p className="text-sm text-gray-500 mt-1">Đăng nhập quản lý</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
