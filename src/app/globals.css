@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffbeb;
+  --foreground: #1c1917;
+  --primary: #d97706;
+  --primary-light: #fbbf24;
+  --primary-dark: #78350f;
+  --rice-cream: #fef3c7;
+  --soil-black: #1c1917;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Georgia, "Times New Roman", serif;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(251, 191, 36, 0.08) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(180, 83, 9, 0.06) 0, transparent 45%);
+}
+
+.rustic-pattern {
+  background-color: #fffbeb;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 12px,
+      rgba(180, 83, 9, 0.04) 12px,
+      rgba(180, 83, 9, 0.04) 13px
+    );
+}
+
+.straw-stripe {
+  background: linear-gradient(
+    180deg,
+    #1c1917 0%,
+    #1c1917 70%,
+    #f59e0b 70%,
+    #f59e0b 75%,
+    #1c1917 75%,
+    #1c1917 100%
+  );
+}

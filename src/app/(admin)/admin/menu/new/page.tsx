@@ -1,0 +1,137 @@
+﻿"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import SessionProvider from "@/components/admin/SessionProvider";
+import AdminShell from "@/components/admin/AdminShell";
+import ImageUpload from "@/components/admin/ImageUpload";
+
+interface Category {
+  id: number;
+  name: string;
+}
+
+function NewMenuItemContent() {
+  const router = useRouter();
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [image, setImage] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/menu")
+      .then((r) => r.json())
+      .then((data: { id: number; name: string }[]) =>
+        setCategories(data.map((c) => ({ id: c.id, name: c.name })))
+      );
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+
+    await fetch("/api/menu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        description: description || null,
+        price: parseInt(price),
+        categoryId: parseInt(categoryId),
+        image: image || null,
+      }),
+    });
+
+    router.push("/admin/menu");
+  };
+
+  return (
+    <div className="max-w-lg">
+      <h1 className="text-2xl font-bold mb-6">Thêm Món Mới</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white rounded-xl p-6 shadow-sm space-y-4"
+      >
+        <div>
+          <label className="block text-sm font-medium mb-1">Ảnh món ăn</label>
+          <ImageUpload value={image} onChange={setImage} />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Tên món</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Mô tả</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            rows={2}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Giá (VND)</label>
+          <input
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            required
+            min={0}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Danh mục</label>
+          <select
+            value={categoryId}
+            onChange={(e) => setCategoryId(e.target.value)}
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            required
+          >
+            <option value="">-- Chọn danh mục --</option>
+            {categories.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex gap-3 pt-2">
+          <button
+            type="button"
+            onClick={() => router.push("/admin/menu")}
+            className="flex-1 bg-gray-100 text-gray-700 font-medium py-2.5 rounded-lg hover:bg-gray-200 transition-colors"
+          >
+            Hủy
+          </button>
+          <button
+            type="submit"
+            disabled={saving}
+            className="flex-1 bg-amber-500 text-white font-medium py-2.5 rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50"
+          >
+            {saving ? "Đang lưu..." : "Lưu"}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default function NewMenuItemPage() {
+  return (
+    <SessionProvider>
+      <AdminShell>
+        <NewMenuItemContent />
+      </AdminShell>
+    </SessionProvider>
+  );
+}
