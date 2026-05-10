@@ -121,7 +121,7 @@ export default function OrderTrackingPage() {
         onClick={() => router.push(`/table/${tableId}/menu`)}
         className="w-full bg-stone-900 text-amber-100 font-bold py-3 px-6 rounded-xl hover:bg-stone-800 transition-colors border-b-4 border-amber-500"
       >
-        🌾 Đặt thêm món
+        🌾 Đặt Thêm Món
       </button>
     </div>
   );

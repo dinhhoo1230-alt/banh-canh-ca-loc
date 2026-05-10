@@ -44,7 +44,7 @@ export default function AdminShell({
         </button>
         <div className="flex items-center gap-2">
           <span className="text-xl">🌾</span>
-          <span className="font-bold">Bánh Canh Cá Lóc</span>
+          <span className="font-bold">Bánh Canh Cá Lóc Phước Lãnh</span>
         </div>
         <div className="w-7" />
       </header>

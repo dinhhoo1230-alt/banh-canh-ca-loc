@@ -40,7 +40,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           <div className="flex items-center gap-2">
             <span className="text-2xl">🌾</span>
             <div>
-              <h1 className="font-bold text-lg leading-tight">Bánh Canh Cá Lóc</h1>
+              <h1 className="font-bold text-lg leading-tight">Bánh Canh Cá Lóc Phước Lãnh</h1>
               <p className="text-[10px] uppercase tracking-widest text-amber-400">
                 Quán Quê
               </p>

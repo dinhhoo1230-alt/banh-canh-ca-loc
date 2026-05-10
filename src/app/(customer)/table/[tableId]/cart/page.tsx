@@ -103,7 +103,7 @@ export default function CartPage() {
           onClick={() => router.push(`/table/${tableId}/menu`)}
           className="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition-colors"
         >
-          ← Thêm món
+          ← Thêm Món
         </button>
         <button
           onClick={handleOrder}

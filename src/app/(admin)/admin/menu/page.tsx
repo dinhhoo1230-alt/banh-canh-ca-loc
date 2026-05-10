@@ -79,7 +79,13 @@ function MenuContent() {
         <div key={cat.id} className="mb-6">
           <h2 className="text-lg font-bold mb-3">{cat.name}</h2>
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-x-auto">
-            <table className="w-full min-w-[640px]">
+            <table className="w-full min-w-[640px] table-fixed">
+              <colgroup>
+                <col />
+                <col className="w-[140px]" />
+                <col className="w-[140px]" />
+                <col className="w-[110px]" />
+              </colgroup>
               <thead className="bg-gray-50">
                 <tr>
                   <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">

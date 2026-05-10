@@ -162,7 +162,7 @@ function TablesContent() {
   <div class="card">
     <div class="header">
       <p class="brand">🌾 Hương Vị Đồng Quê 🌾</p>
-      <p class="name">Bánh Canh Cá Lóc</p>
+      <p class="name">Bánh Canh Cá Lóc Phước Lãnh</p>
       <p class="table-no">Bàn ${tableNumber}</p>
       ${showSubtitle ? `<p class="subtitle">${tableName}</p>` : ""}
     </div>
